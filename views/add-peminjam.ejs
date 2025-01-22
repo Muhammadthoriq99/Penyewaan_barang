@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/styles.css">
+    <title>Tambah Peminjam</title>
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>Tambah Peminjam</h2>
+        <form action="/add-peminjam" method="POST">
+            <div class="form-group">
+                <label for="nama">Nama</label>
+                <input type="text" name="nama" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" name="email" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="telepon">Telepon</label>
+                <input type="text" name="telepon" class="form-control">
+            </div>
+            <div class="form-group">
+                <label for="alamat">Alamat</label>
+                <textarea name="alamat" class="form-control"></textarea>
+            </div>
+            <button type="submit" class="btn btn-success">Simpan</button>
+            <a href="/" class="btn btn-secondary">Kembali</a>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer mt-auto py-3 bg-light">
+        <div class="container">
+            <span class="text-muted">&copy; 2023 Peminjaman Barang. All rights reserved.</span>
+        </div>
+    </footer>
+</body>
+</html>
