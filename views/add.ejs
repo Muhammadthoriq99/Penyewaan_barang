@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Peminjaman</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Tambah Peminjaman</h1>
+    </header>
+    <form action="/add" method="POST">
+        <label for="id_barang">Pilih Barang:</label>
+        <select name="id_barang" id="id_barang" required>
+            <% barang.forEach(item => { %>
+                <option value="<%= item._id %>"><%= item.nama_barang %></option>
+            <% }) %>
+        </select>
+
+        <label for="id_peminjam">Pilih Peminjam:</label>
+        <select name="id_peminjam" id="id_peminjam" required>
+            <% peminjam.forEach(item => { %>
+                <option value="<%= item._id %>"><%= item.nama %></option>
+            <% }) %>
+        </select>
+
+
+        <label for="tanggal_peminjaman">Tanggal Peminjaman:</label>
+        <input type="date" name="tanggal_peminjaman" required>
+
+        <label for="tanggal_pengembalian">Tanggal Pengembalian:</label>
+        <input type="date" name="tanggal_pengembalian" required>
+
+        <label for="status">Status:</label>
+        <select id="status" name="status" required>
+            <option value="Dipinjam">Dipinjam</option>
+            <option value="Tersedia">Tersedia</option>
+        </select>
+
+        <label for="jumlah">Jumlah</label>
+        <input type="number" name="jumlah" class="form-control" required>
+        <br>
+
+
+        <button type="submit">Simpan Peminjaman</button>
+    </form>
+    <a href="/">Kembali</a>
+</body>
+</html>

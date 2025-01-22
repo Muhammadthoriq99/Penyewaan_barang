@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Peminjam</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Edit Peminjam</h1>
+    </header>
+    
+    <form method="POST" action="/edit-peminjam/<%= peminjam._id %>">
+        <label for="nama">Nama Peminjam:</label>
+        <input type="text" id="nama" name="nama" value="<%= peminjam.nama %>" required>
+        <br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="<%= peminjam.email %>" required>
+        <br>
+
+        <label for="telepon">Telepon:</label>
+        <input type="text" id="telepon" name="telepon" value="<%= peminjam.telepon %>" required>
+        <br>
+       
+        <label for="alamat">Alamat:</label>
+        <textarea id="alamat" name="alamat" required><%= peminjam.alamat %></textarea>
+
+        <button type="submit">Simpan Perubahan</button>
+    </form>
+
+    <br>
+    <a href="/">Kembali ke Daftar Peminjaman</a>
+</body>
+</html>

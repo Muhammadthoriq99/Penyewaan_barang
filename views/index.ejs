@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daftar Peminjaman Barang</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Daftar Peminjaman Barang</h1>
+        <nav>
+            <a href="/add-barang">Tambah Barang</a>
+            <a href="/add-peminjam">Tambah Peminjam</a>
+            <a href="/add">Tambah Peminjaman</a>
+        </nav>
+    </header>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Barang</th>
+                <th>Nama Peminjam</th>
+                <th>Tanggal Peminjaman</th>
+                <th>Tanggal Pengembalian</th>
+                <th>Status</th>
+                <th>Jumlah</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% peminjaman.forEach(peminjaman => { %>
+                <tr>
+                    <td><%= peminjaman.id_barang.nama_barang %></td>
+                    <td><%= peminjaman.id_peminjam.nama %></td>
+                    <td><%= peminjaman.tanggal_peminjaman.toLocaleDateString() %></td>
+                    <td><%= peminjaman.tanggal_pengembalian ? peminjaman.tanggal_pengembalian.toLocaleDateString() : 'Belum Kembali' %></td>
+                    <td><%= peminjaman.status %></td>
+                    <td><%= peminjaman.jumlah %></td>
+                    <td>
+                        <a href="/edit/<%= peminjaman._id %>">Edit</a>
+                        <form action="/delete/<%= peminjaman._id %>" method="POST" style="display:contents;">
+                            <button type="submit">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <h2>Daftar Barang Tersedia</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Barang</th>
+                <th>Kategori</th>
+                <th>Jumlah</th>
+                <th>Kondisi</th>
+                <th>Deskripsi</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% barang.forEach(item => { %>
+                <tr>
+                    <td><%= item.nama_barang %></td>
+                    <td><%= item.kategori %></td>
+                    <td><%= item.jumlah %></td>
+                    <td><%= item.kondisi %></td>
+                    <td><%= item.deskripsi %></td>
+                    <td>
+                        <a href="/edit-barang/<%= item._id %>">Edit</a>
+                            <form action="/delete/barang/<%= item._id %>" method="POST" style="display:contents;">
+                                <button type="submit">Hapus</button>
+                            </form>
+        
+                        
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+
+    <h2>Daftar Peminjam</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nama Peminjam</th>
+                <th>Email</th>
+                <th>Telepon</th>
+                <th>Alamat</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% peminjam.forEach(item => { %>
+                <tr>
+                    <td><%= item.nama %></td>
+                    <td><%= item.email %></td>
+                    <td><%= item.telepon %></td>
+                    <td><%= item.alamat %></td>
+                    <td>
+                        <a href="/edit-peminjam/<%= item._id %>">Edit</a> 
+                        <form action="/delete/peminjam/<%= item.id %>" method="POST" style="display:contents;">
+                            <button type="submit">Hapus</button>
+                        </form>
+                    </td>
+                </tr>
+            <% }) %>
+        </tbody>
+    </table>
+</body>
+</html>
